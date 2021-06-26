@@ -24,6 +24,13 @@ class Violation {
      * @Assert\NotBlank()
      */
     private $description;
+
+    /**
+     * @ORM\Column(type="float")
+     * @Assert\NotBlank()
+     */
+    private $ratingWeight;
+
     /**
      * @return mixed
      */
@@ -66,4 +73,20 @@ class Violation {
     {
         $this->description = $description;
     }
+    /**
+     * @return mixed
+     */
+    public function getRatingWeight()
+    {
+        return $this->ratingWeight;
+    }
+
+    /**
+     * @param mixed $ratingWeight
+     */
+    public function setRatingWeight($ratingWeight)
+    {
+        $this->ratingWeight = $ratingWeight;
+    }
+
 }
