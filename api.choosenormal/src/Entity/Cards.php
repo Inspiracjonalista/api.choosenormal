@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\MarkersRepository;
+use App\Repository\CardsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MarkersRepository::class)
+ * @ORM\Entity(repositoryClass=CardsRepository::class)
  */
-class Markers
+class Cards
 {
     /**
      * @ORM\Id
@@ -18,24 +18,14 @@ class Markers
     private $id;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=255)
      */
-    private $lat;
+    private $name;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=255)
      */
-    private $longitude;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $id_card;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $safety;
+    private $logo;
 
     /**
      * @ORM\Column(type="integer")
@@ -57,55 +47,36 @@ class Markers
      */
     private $updated_at;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLat(): ?string
+    public function getName(): ?string
     {
-        return $this->lat;
+        return $this->name;
     }
 
-    public function setLat(string $lat): self
+    public function setName(string $name): self
     {
-        $this->lat = $lat;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getLongitude(): ?float
+    public function getLogo(): ?string
     {
-        return $this->longitude;
+        return $this->logo;
     }
 
-    public function setLongitude(float $longitude): self
+    public function setLogo(string $logo): self
     {
-        $this->longitude = $longitude;
-
-        return $this;
-    }
-
-    public function getIdCard(): ?int
-    {
-        return $this->id_card;
-    }
-
-    public function setIdCard(int $id_card): self
-    {
-        $this->id_card = $id_card;
-
-        return $this;
-    }
-
-    public function getSafety(): ?int
-    {
-        return $this->safety;
-    }
-
-    public function setSafety(int $safety): self
-    {
-        $this->safety = $safety;
+        $this->logo = $logo;
 
         return $this;
     }
@@ -154,6 +125,18 @@ class Markers
     public function setUpdatedAt(?\DateTimeImmutable $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
